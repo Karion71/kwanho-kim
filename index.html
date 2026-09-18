@@ -1,4 +1,18 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>김관호</title>
+<meta name="description" content="AI 거버넌스와 엔터프라이즈 SW 품질을 설계하는 27년차 테스트 매니저. ISO/IEC 42001 인증 주도, TMMi 선임심사원, ISTQB Advanced Level 3종.">
+<meta name="author" content="김관호">
+<link rel="canonical" href="https://karion71.github.io/kwanho-kim/">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="김관호 — AI 거버넌스 · 엔터프라이즈 SW 품질">
+<meta property="og:description" content="AI 거버넌스와 엔터프라이즈 SW 품질을 설계하는 27년차 테스트 매니저. ISO/IEC 42001 인증 주도, TMMi 선임심사원, ISTQB Advanced Level 3종.">
+<meta property="og:url" content="https://karion71.github.io/kwanho-kim/">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap">
@@ -61,6 +75,7 @@
   }
 
   * { box-sizing: border-box; }
+  img { max-width: 100%; }
 
   body {
     margin: 0;
@@ -86,7 +101,7 @@
   /* ── 상단 고정 바 ─────────────────────────── */
   .topbar {
     position: sticky;
-    top: env(safe-area-inset-top, 0px);
+    top: 0;
     z-index: 20;
     background: color-mix(in srgb, var(--paper) 88%, transparent);
     backdrop-filter: blur(10px);
@@ -98,7 +113,8 @@
     justify-content: space-between;
     gap: 16px;
     min-height: 50px;
-    padding-block: 8px;
+    padding-block-start: calc(8px + env(safe-area-inset-top, 0px));
+    padding-block-end: 8px;
     flex-wrap: wrap;
   }
   .topbar .sig {
@@ -575,7 +591,7 @@
     color: var(--muted);
   }
 
-  .tail { padding-bottom: 72px; }
+  .tail { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
 
   @media (max-width: 760px) {
     .wrap { padding-inline: 20px; }
@@ -606,6 +622,8 @@
 
   html { scroll-behavior: smooth; }
 </style>
+</head>
+<body>
 
 <div class="topbar">
   <div class="wrap">
@@ -1085,3 +1103,6 @@
     targets.forEach(function (t) { io.observe(t); });
   })();
 </script>
+
+</body>
+</html>
