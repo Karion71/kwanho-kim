@@ -1,0 +1,1087 @@
+<title>김관호</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap">
+<style>
+  :root {
+    --paper:     #F1F3F6;
+    --surface:   #FFFFFF;
+    --sunken:    #E8EBF0;
+    --ink:       #131820;
+    --ink-2:     #39465A;
+    --muted:     #6E7C90;
+    --line:      #DBE0E8;
+    --line-2:    #C0C9D6;
+    --accent:    #1B3A5C;
+    --accent-2:  #2F6394;
+    --accent-bg: #E3EAF2;
+    --signal:    #A85E00;
+    --signal-bg: #F8EEDC;
+    --danger:    #A32B22;
+
+    --f-display: "Hahmlet", "Nanum Myeongjo", "Apple SD Gothic Neo", serif;
+    --f-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:     #0E1218;
+      --surface:   #151B24;
+      --sunken:    #11161D;
+      --ink:       #E6EBF2;
+      --ink-2:     #B2BDCC;
+      --muted:     #7F8DA0;
+      --line:      #202833;
+      --line-2:    #2F3A48;
+      --accent:    #8EB9E4;
+      --accent-2:  #A8CBEE;
+      --accent-bg: #172533;
+      --signal:    #E0A64A;
+      --signal-bg: #2A2114;
+      --danger:    #F0938A;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper:     #0E1218;
+    --surface:   #151B24;
+    --sunken:    #11161D;
+    --ink:       #E6EBF2;
+    --ink-2:     #B2BDCC;
+    --muted:     #7F8DA0;
+    --line:      #202833;
+    --line-2:    #2F3A48;
+    --accent:    #8EB9E4;
+    --accent-2:  #A8CBEE;
+    --accent-bg: #172533;
+    --signal:    #E0A64A;
+    --signal-bg: #2A2114;
+    --danger:    #F0938A;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-weight: 300;
+    font-size: 15.5px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent-2); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { color: var(--ink); }
+  :focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding-inline: 28px;
+  }
+
+  /* ── 상단 고정 바 ─────────────────────────── */
+  .topbar {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 50px;
+    padding-block: 8px;
+    flex-wrap: wrap;
+  }
+  .topbar .sig {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+  }
+  .nav { display: flex; gap: 4px 16px; flex-wrap: wrap; }
+  .nav a {
+    font-family: var(--f-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 2px 0;
+    border-bottom: 1px solid transparent;
+  }
+  .nav a:hover { color: var(--ink); }
+  .nav a.is-active { color: var(--accent-2); border-bottom-color: var(--accent-2); }
+
+  /* ── 표제부 ──────────────────────────────── */
+  .masthead { padding-block: 64px 0; }
+
+  .doctype {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    margin: 0 0 22px;
+  }
+
+  h1 {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: clamp(46px, 12vw, 82px);
+    line-height: 1;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .romaja {
+    display: block;
+    font-family: var(--f-mono);
+    font-weight: 400;
+    font-size: clamp(11px, 2.8vw, 13px);
+    letter-spacing: 0.34em;
+    color: var(--signal);
+    margin-top: 16px;
+  }
+
+  .title-line {
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: clamp(18px, 4.2vw, 24px);
+    line-height: 1.55;
+    color: var(--ink-2);
+    max-width: 24ch;
+    margin: 30px 0 0;
+    text-wrap: balance;
+  }
+
+  .ident {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 26px;
+    font-family: var(--f-mono);
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 26px;
+  }
+  .ident b { font-weight: 500; color: var(--ink-2); }
+
+  /* ── 지표 스트립 ─────────────────────────── */
+  .figures {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--line-2);
+    background: var(--surface);
+    margin-top: 44px;
+  }
+  .fig { padding: 18px 20px; border-right: 1px solid var(--line); }
+  .fig:last-child { border-right: 0; }
+  .fig dt {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    margin: 0 0 8px;
+  }
+  .fig dd {
+    margin: 0;
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 1.15;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+  .fig dd small {
+    display: block;
+    font-family: var(--f-body);
+    font-weight: 400;
+    font-size: 12.5px;
+    letter-spacing: 0;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+  .fig.award dd { color: var(--signal); }
+
+  /* ── 절 ──────────────────────────────────── */
+  .clause { padding-block: 54px 0; scroll-margin-top: 72px; }
+
+  .clause-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    border-top: 2px solid var(--ink);
+    padding-top: 12px;
+    margin-bottom: 26px;
+  }
+  .num {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--signal);
+    font-variant-numeric: tabular-nums;
+  }
+  .clause-head h2 {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 20px;
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  .clause-head .en {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-left: auto;
+    text-align: right;
+  }
+
+  .prose p { margin: 0 0 16px; max-width: 64ch; color: var(--ink-2); }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { font-weight: 500; color: var(--ink); }
+
+  /* ── 요약 항목 ───────────────────────────── */
+  .points { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .points li {
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    gap: 12px;
+    max-width: 68ch;
+    color: var(--ink-2);
+  }
+  .points li::before {
+    content: "";
+    width: 7px; height: 7px;
+    margin-top: 12px;
+    background: var(--accent);
+    transform: rotate(45deg);
+  }
+  .points strong { font-weight: 500; color: var(--ink); }
+
+  /* ── 역량 블록 ───────────────────────────── */
+  .skills { display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .skill {
+    display: grid;
+    grid-template-columns: 13rem 1fr;
+    gap: 6px 28px;
+    padding-block: 16px;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+  .skill dt {
+    font-weight: 500;
+    font-size: 14.5px;
+    color: var(--ink);
+  }
+  .skill dt span {
+    display: block;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .skill dd { margin: 0; color: var(--ink-2); font-size: 14.5px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; padding: 0; list-style: none; }
+  .chips li {
+    font-family: var(--f-mono);
+    font-size: 11.5px;
+    color: var(--ink-2);
+    border: 1px solid var(--line-2);
+    padding: 3px 9px;
+    background: var(--surface);
+  }
+
+  /* ── 경력 ────────────────────────────────── */
+  .career { list-style: none; margin: 0; padding: 0; }
+  .career > li {
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: 6px 28px;
+    padding-block: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .career > li:first-child { border-top: 1px solid var(--line); }
+  .period {
+    font-family: var(--f-mono);
+    font-size: 12.5px;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent-2);
+    white-space: nowrap;
+    padding-top: 3px;
+  }
+  .org {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 17.5px;
+    margin: 0 0 2px;
+    line-height: 1.4;
+  }
+  .post { font-size: 13.5px; color: var(--muted); margin: 0 0 8px; font-family: var(--f-mono); }
+  .did { margin: 0; color: var(--ink-2); font-size: 14.5px; max-width: 58ch; }
+
+  /* ── 성과 ────────────────────────────────── */
+  .wins { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
+  .wins > li {
+    border-left: 2px solid var(--line-2);
+    padding: 2px 0 2px 20px;
+  }
+  .wins > li.key { border-left-color: var(--signal); }
+  .wins h3 {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 16.5px;
+    margin: 0 0 6px;
+    line-height: 1.45;
+  }
+  .wins p { margin: 0; color: var(--ink-2); font-size: 14.5px; max-width: 60ch; }
+  .wins ul { margin: 8px 0 0; padding-left: 18px; color: var(--ink-2); font-size: 14.5px; }
+  .wins li li { margin-bottom: 4px; }
+
+  .stamp {
+    display: inline-block;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    color: var(--signal);
+    background: var(--signal-bg);
+    border: 1px solid color-mix(in srgb, var(--signal) 40%, transparent);
+    padding: 2px 8px;
+    margin-left: 8px;
+    vertical-align: 2px;
+  }
+
+  /* ── 프로젝트 ────────────────────────────── */
+  .projects { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .projects li {
+    display: grid;
+    grid-template-columns: 10.5rem 1fr 11rem;
+    gap: 4px 24px;
+    padding-block: 13px;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .projects .pname { font-size: 14.5px; color: var(--ink); }
+  .projects .prole {
+    font-family: var(--f-mono);
+    font-size: 11.5px;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  /* ── 자격 ────────────────────────────────── */
+  .certs { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .certs li {
+    display: grid;
+    grid-template-columns: 1fr 12rem 5.5rem;
+    gap: 2px 20px;
+    padding-block: 11px;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .certs .cname { font-size: 14.5px; color: var(--ink); }
+  .certs .cbody { font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); }
+  .certs .cdate {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-2);
+    text-align: right;
+  }
+  .certs li.newest .cname { color: var(--signal); font-weight: 500; }
+  .certs li.newest .cdate { color: var(--signal); }
+
+  /* ── 학력 · 논문 ─────────────────────────── */
+  .plain { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .plain li { display: grid; grid-template-columns: 11rem 1fr; gap: 4px 28px; align-items: baseline; }
+
+  /* ── 연락 ────────────────────────────────── */
+  .contact-box {
+    border: 1px solid var(--line-2);
+    background: var(--surface);
+    padding: 26px 28px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 24px;
+  }
+  .mail {
+    font-family: var(--f-mono);
+    font-size: 17px;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-2);
+    padding-bottom: 3px;
+    word-break: break-all;
+  }
+  .mail:hover { color: var(--accent-2); }
+  .copy {
+    font-family: var(--f-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    color: var(--ink-2);
+    background: transparent;
+    border: 1px solid var(--line-2);
+    padding: 6px 13px;
+    cursor: pointer;
+    transition: border-color .18s ease, color .18s ease, background-color .18s ease;
+  }
+  .copy:hover, .copy[data-done="1"] {
+    border-color: var(--accent-2);
+    color: var(--accent-2);
+    background: var(--accent-bg);
+  }
+  .note { font-size: 13.5px; color: var(--muted); margin: 14px 0 0; max-width: 60ch; }
+
+  /* ── 문의 폼 ─────────────────────────────── */
+  .form {
+    margin-top: 22px;
+    border: 1px solid var(--line-2);
+    background: var(--surface);
+    padding: 26px 28px;
+  }
+  .form-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .form-head h3 {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 17px;
+    margin: 0;
+  }
+  .form-head span {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .field { display: grid; gap: 7px; margin-bottom: 16px; }
+  .field label {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+  }
+  .field label em {
+    font-style: normal;
+    color: var(--signal);
+    margin-left: 4px;
+  }
+  .field input,
+  .field textarea {
+    font-family: var(--f-body);
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line-2);
+    border-radius: 0;
+    padding: 10px 12px;
+    width: 100%;
+    transition: border-color .16s ease;
+  }
+  .field textarea { min-height: 136px; resize: vertical; }
+  .field input::placeholder,
+  .field textarea::placeholder { color: var(--muted); opacity: .75; }
+  .field input:hover,
+  .field textarea:hover { border-color: var(--muted); }
+  .field input:focus,
+  .field textarea:focus {
+    outline: 2px solid var(--accent-2);
+    outline-offset: -1px;
+    border-color: var(--accent-2);
+  }
+  .field input:disabled,
+  .field textarea:disabled { opacity: .55; cursor: not-allowed; }
+
+  /* 봇 유인용 필드 — 사람에게는 보이지 않음 */
+  .trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .form-foot {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .submit {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--paper);
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 11px 26px;
+    cursor: pointer;
+    transition: opacity .16s ease;
+  }
+  .submit:hover { opacity: .85; }
+  .submit:disabled { opacity: .45; cursor: not-allowed; }
+
+  .status {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 0;
+    flex: 1 1 14rem;
+    min-width: 0;
+  }
+  .status.ok { color: var(--accent-2); }
+  .status.bad { color: var(--danger); }
+  .status a { color: inherit; }
+
+  .privacy {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    line-height: 1.7;
+    color: var(--muted);
+    margin: 18px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+
+  footer {
+    margin-top: 58px;
+    padding-block: 20px 8px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+
+  .tail { padding-bottom: 72px; }
+
+  @media (max-width: 760px) {
+    .wrap { padding-inline: 20px; }
+    .masthead { padding-block: 40px 0; }
+    .figures { grid-template-columns: repeat(2, 1fr); }
+    .fig { border-bottom: 1px solid var(--line); }
+    .fig:nth-child(2n) { border-right: 0; }
+    .fig:nth-child(n+3) { border-bottom: 0; }
+    .clause { padding-block: 40px 0; }
+    .clause-head { flex-wrap: wrap; }
+    .clause-head .en { margin-left: 0; width: 100%; text-align: left; }
+    .skill,
+    .career > li,
+    .plain li { grid-template-columns: 1fr; gap: 4px; }
+    .projects li { grid-template-columns: 1fr; gap: 2px; padding-block: 15px; }
+    .projects .prole { text-align: left; }
+    .certs li { grid-template-columns: 1fr auto; gap: 2px 14px; }
+    .certs .cbody { grid-column: 1; }
+    .certs .cdate { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+    .period { padding-top: 0; }
+    .row { grid-template-columns: 1fr; gap: 0; }
+    .form { padding: 22px 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  }
+
+  html { scroll-behavior: smooth; }
+</style>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="sig">김관호</span>
+    <nav class="nav" aria-label="섹션 바로가기">
+      <a href="#summary">01 요약</a>
+      <a href="#skills">02 역량</a>
+      <a href="#career">03 경력</a>
+      <a href="#wins">04 성과</a>
+      <a href="#projects">05 프로젝트</a>
+      <a href="#certs">06 자격</a>
+      <a href="#edu">07 학력·논문</a>
+      <a href="#contact">08 연락</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+
+  <header class="wrap masthead">
+    <p class="doctype">SW QUALITY GOVERNANCE · EST. 1999</p>
+    <h1>김관호<span class="romaja">KIM KWAN-HO</span></h1>
+    <p class="title-line">AI 거버넌스와 엔터프라이즈 SW 품질을 설계하는 27년차 테스트 매니저.</p>
+
+    <div class="ident">
+      <span>소속 <b>프리랜서</b></span>
+      <span>직무 <b>AI Governance · QA / Test Manager</b></span>
+      <span>위치 <b>서울</b></span>
+    </div>
+
+    <dl class="figures">
+      <div class="fig">
+        <dt>경력</dt>
+        <dd>27년 6개월<small>개발자에서 QA 총괄까지</small></dd>
+      </div>
+      <div class="fig">
+        <dt>kt ds 핵심 사업</dt>
+        <dd>15개<small>전사 QA 총괄 및 완수</small></dd>
+      </div>
+      <div class="fig">
+        <dt>전문 강의</dt>
+        <dd>100회+<small>ISTQB · ISO 29119 · 26262</small></dd>
+      </div>
+      <div class="fig award">
+        <dt>표창</dt>
+        <dd>2025<small>kt ds CEO 표창</small></dd>
+      </div>
+    </dl>
+  </header>
+
+  <!-- 01 ─────────────────────────────────── -->
+  <section class="wrap clause" id="summary">
+    <div class="clause-head">
+      <span class="num">01</span>
+      <h2>전문가 요약</h2>
+      <span class="en">PROFESSIONAL SUMMARY</span>
+    </div>
+    <ul class="points">
+      <li><span><strong>27년 경력의 엔터프라이즈 SW 품질 거버넌스 및 테스팅 전문가.</strong> 개발자 → TA → 성능 테스터 → QA 컨설턴트 → TMMi 선임심사원 → 전사 QA 총괄로 단계를 밟아 올라왔습니다.</span></li>
+      <li><span>국내 선도적으로 <strong>AI 경영시스템(ISO/IEC 42001) 인증</strong>을 주도하고, 전사 <strong>AI 신뢰성(Trustworthy AI) 거버넌스 체계</strong>를 전면 제정했습니다.</span></li>
+      <li><span><strong>Azure / AWS 클라우드 마이그레이션 품질 방법론</strong>을 수립해 회사의 기술적 토대를 마련했고, 그 성과로 2025년 kt ds CEO 표창을 받았습니다.</span></li>
+      <li><span>금융 · 자동차 · 제조 · 공공 등 대형 산업 도메인 전반에서 대규모 테스팅 프로세스를 최적화하고, <strong>위기 프로젝트의 리스크를 해결</strong>해 왔습니다.</span></li>
+      <li><span>Gen-AI 기반 <strong>테스트 산출물 자동 생성 AI Agent</strong>를 개발하는 등, 최신 AI 기술로 QA를 혁신하는 일을 이어가고 있습니다.</span></li>
+    </ul>
+  </section>
+
+  <!-- 02 ─────────────────────────────────── -->
+  <section class="wrap clause" id="skills">
+    <div class="clause-head">
+      <span class="num">02</span>
+      <h2>핵심 역량</h2>
+      <span class="en">KEY COMPETENCIES</span>
+    </div>
+    <dl class="skills">
+      <div class="skill">
+        <dt>AI · 클라우드 거버넌스<span>AI &amp; CLOUD GOVERNANCE</span></dt>
+        <dd>ISO/IEC 42001 인증 실무, AI 리스크 관리 절차 수립, Azure / AWS 마이그레이션 QA.</dd>
+      </div>
+      <div class="skill">
+        <dt>테스트 관리<span>TEST MANAGEMENT</span></dt>
+        <dd>TMMi 선임심사원(Lead Assessor). ISTQB 최상위 자격 — Advanced Level 3종 및 AI Testing 보유. AI 시스템을 포함한 SI 프로젝트 테스트 관리.</dd>
+      </div>
+      <div class="skill">
+        <dt>품질 보증<span>QUALITY ASSURANCE</span></dt>
+        <dd>대형 SI 프로젝트 QA 총괄. 개인 역량이 아니라 시스템과 프로세스가 품질을 관리하는 구조를 정착시킵니다.</dd>
+      </div>
+      <div class="skill">
+        <dt>방법론 제정<span>METHODOLOGY</span></dt>
+        <dd>AX / Cloud Migration 품질 방법론 제정 및 자산화, 전사 테스트 방법론 수립.</dd>
+      </div>
+      <div class="skill">
+        <dt>프로세스 · 자동화<span>DEVOPS &amp; AUTOMATION</span></dt>
+        <dd>전주기 품질 관리의 시스템화.
+          <ul class="chips">
+            <li>Jira / Confluence</li><li>CI/CD</li><li>SonarQube</li><li>PMD</li>
+            <li>OTestManager</li><li>SmartSIM</li><li>HP LoadRunner</li><li>JMeter</li>
+            <li>Cucumber</li><li>JaCoCo</li>
+          </ul>
+        </dd>
+      </div>
+      <div class="skill">
+        <dt>위기 관리<span>TURNAROUND</span></dt>
+        <dd>일정 지연·품질 저하로 위기에 처한 고위험 프로젝트에 긴급 투입되어 거버넌스를 재정립하고 완수까지 이끄는 턴어라운드 역량.</dd>
+      </div>
+      <div class="skill">
+        <dt>개발 언어 · 방법론<span>LANGUAGES &amp; PROCESS</span></dt>
+        <dd>C / C++, Java, HTML, CORBA · Waterfall, V-Model, OOAD, Agile(Scrum), 탐색적 테스팅.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- 03 ─────────────────────────────────── -->
+  <section class="wrap clause" id="career">
+    <div class="clause-head">
+      <span class="num">03</span>
+      <h2>경력 사항</h2>
+      <span class="en">총 27년 6개월</span>
+    </div>
+    <ul class="career">
+      <li>
+        <span class="period">2023.08 – 2026.07</span>
+        <div>
+          <p class="org">kt ds</p>
+          <p class="post">기술혁신단 · 전사/프로젝트 QA 총괄 &amp; Test Manager</p>
+          <p class="did">전사 AI·클라우드 거버넌스 수립, 핵심 SI 사업 QA 총괄, QA 방법론 자산화.</p>
+        </div>
+      </li>
+      <li>
+        <span class="period">2023.01 – 2023.07</span>
+        <div>
+          <p class="org">㈜엘로드솔루션</p>
+          <p class="post">Test Manager</p>
+          <p class="did">애큐온저축은행 코어뱅킹 차세대 시스템 구축 프로젝트 테스트 관리자.</p>
+        </div>
+      </li>
+      <li>
+        <span class="period">2022.03 – 2022.12</span>
+        <div>
+          <p class="org">㈜비컴솔루션</p>
+          <p class="post">FA사업부 · 수석 컨설턴트, 강사, 테스트 관리자</p>
+          <p class="did">SK하이닉스 제조시스템 표준 품질 검수 체계 구축 및 PM.</p>
+        </div>
+      </li>
+      <li>
+        <span class="period">2019.10 – 2022.02</span>
+        <div>
+          <p class="org">㈜디투엘</p>
+          <p class="post">Hi-Tech사업본부 · 수석 컨설턴트, 강사, 테스트 관리자</p>
+          <p class="did">SK하이닉스 MES TMMi Lv3 컨설팅 및 테스팅 자동화 도구 고도화 PM.</p>
+        </div>
+      </li>
+      <li>
+        <span class="period">2019.07 – 2019.10</span>
+        <div>
+          <p class="org">프리랜서</p>
+          <p class="post">수석 컨설턴트, 강사, 테스트 관리자</p>
+        </div>
+      </li>
+      <li>
+        <span class="period">2012.01 – 2019.06</span>
+        <div>
+          <p class="org">㈜STA테스팅컨설팅</p>
+          <p class="post">전략서비스팀 · 수석 컨설턴트, 강사, TMMi 선임심사원</p>
+          <p class="did">현대자동차, SK하이닉스, 한화시스템 등의 테스트 프로세스 개선 컨설팅 및 TMMi 공식 심사, ISTQB 강의.</p>
+        </div>
+      </li>
+      <li>
+        <span class="period">1999.02 – 2011.12</span>
+        <div>
+          <p class="org">㈜동양시스템즈</p>
+          <p class="post">품질경영팀 · 책임 (최종)</p>
+          <p class="did">개발자, 개발리더(CORBA · Java), TA, 자바 강사, 성능 테스터(약 50여 개 프로젝트), 테스트 관리자(동양종금 차세대 등).</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 04 ─────────────────────────────────── -->
+  <section class="wrap clause" id="wins">
+    <div class="clause-head">
+      <span class="num">04</span>
+      <h2>주요 성과</h2>
+      <span class="en">kt ds, 2023.08 – 2026.07</span>
+    </div>
+    <ul class="wins">
+      <li class="key">
+        <h3>AI 경영시스템(ISO/IEC 42001) 인증 거버넌스 구축</h3>
+        <p>전사 기술혁신단 산하에서 AI 신뢰성 확보를 위한 리스크 관리 절차서와 거버넌스 체계를 전면 제정했습니다.</p>
+      </li>
+      <li class="key">
+        <h3>Azure / AWS Migration 방법론 수립 및 자산화<span class="stamp">CEO 표창 2025</span></h3>
+        <p>자체 클라우드 마이그레이션 품질 방법론의 PM으로서 프레임워크를 수립하고 회사의 기술적 토대를 마련했습니다.</p>
+      </li>
+      <li>
+        <h3>전사 핵심 프로젝트 QA 총괄 — 15개 사업</h3>
+        <ul>
+          <li>신영증권 클라우드 전환, NH농협은행 컨택센터 고도화, DPG(디지털플랫폼정부) 통합플랫폼 등 대형 SI 품질 관리를 성공적으로 리드.</li>
+          <li>프리텔 MVNO, 디플정 통합플랫폼, kt FLOW1 등 일정 지연·품질 저하 고위험 프로젝트에 긴급 투입 후 턴어라운드 성공.</li>
+        </ul>
+      </li>
+      <li>
+        <h3>품질 관리 솔루션 고도화</h3>
+        <p>자사 Test-Suite(DSCore.TTC) 내 'Quality Gate' 모듈 개발을 주도하고 품질 통제 프로세스를 시스템화했습니다.</p>
+      </li>
+      <li>
+        <h3>이전 주요 성과</h3>
+        <ul>
+          <li>SK하이닉스 MES 시스템 TMMi Lv3 인증 취득 주도 (2020–2022)</li>
+          <li>TMMi 프로세스 컨설팅 및 공식 심사 — 현대자동차, SK하이닉스, 한화시스템</li>
+          <li>전사 테스트 방법론 수립 및 테스트 관리 시스템 개발·확대 (동양시스템즈, 2007–2011)</li>
+          <li>SI 프로젝트 성능 테스트 70여 개 수행 (2002–2008)</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 05 ─────────────────────────────────── -->
+  <section class="wrap clause" id="projects">
+    <div class="clause-head">
+      <span class="num">05</span>
+      <h2>주요 참여 프로젝트</h2>
+      <span class="en">MAJOR PROJECTS</span>
+    </div>
+    <ul class="projects">
+      <li><span class="period">2026.04 – 2026.07</span><span class="pname">kt FLOW1 (구 C-Cube Refactor) 프로젝트</span><span class="prole">프로젝트QA · 테스트매니저</span></li>
+      <li><span class="period">2025.02 – 2025.06</span><span class="pname">디지털플랫폼정부(DPG) 통합플랫폼 구현</span><span class="prole">프로젝트QA · 테스트매니저</span></li>
+      <li><span class="period">2023.10 – 2023.12</span><span class="pname">프리텔 MVNO 시스템 구축</span><span class="prole">프로젝트QA · 테스트매니저 · 전환담당</span></li>
+      <li><span class="period">2023.01 – 2023.08</span><span class="pname">애큐온저축은행 코어뱅킹 차세대 시스템 구축</span><span class="prole">Test Manager</span></li>
+      <li><span class="period">2022.03 – 2022.12</span><span class="pname">SK하이닉스 제조시스템 표준 품질 검수 체계 구축 및 거버넌스 정립 (TMMi Lv3 인증 취득 주도)</span><span class="prole">PM · Testing Consultant</span></li>
+      <li><span class="period">2021.06 – 2022.02</span><span class="pname">SK하이닉스 MES TMMi Lv3 프로세스 개선 컨설팅</span><span class="prole">Testing Consultant</span></li>
+      <li><span class="period">2020.07 – 2021.09</span><span class="pname">SK하이닉스 MES 테스팅 자동화 도구 리뉴얼 Ph1 · Ph2</span><span class="prole">Project Manager</span></li>
+      <li><span class="period">2020.04 – 2020.06</span><span class="pname">SK하이닉스 MES TMMi Lv2 프로세스 개선 컨설팅</span><span class="prole">Testing Consultant</span></li>
+      <li><span class="period">2018.05 – 2019.03</span><span class="pname">현대자동차 ACU 제어로직 평가 효율화 기술 개발 컨설팅</span><span class="prole">PM · Testing Consultant</span></li>
+      <li><span class="period">2017.03 – 2017.10</span><span class="pname">현대자동차 제어기분야 SW 테스트설계 고도화 기술용역</span><span class="prole">PM · Testing Consultant</span></li>
+      <li><span class="period">2015.10</span><span class="pname">한화탈레스(현 한화시스템) TMMi Lv3 공식 심사</span><span class="prole">Lead Assessor</span></li>
+      <li><span class="period">2012.03 – 2019.05</span><span class="pname">ISTQB FL/AL, ISO 29119, ISO 26262 전문 강의 (100회 이상)</span><span class="prole">Instructor</span></li>
+      <li><span class="period">2009.04 – 2011.12</span><span class="pname">동양종금증권 · HK저축은행 · SC제일은행 · 보건복지부 차세대/DW 구축</span><span class="prole">Test Manager</span></li>
+      <li><span class="period">2004.08 – 2019.02</span><span class="pname">알리안츠생명 등 50여 프로젝트</span><span class="prole">성능 테스터</span></li>
+      <li><span class="period">2001.07 – 2004.07</span><span class="pname">국민연금 · 금융감독원 · 동양카드 등</span><span class="prole">TA</span></li>
+      <li><span class="period">1999.05 – 2001.06</span><span class="pname">신공항 · KTF · 자사 시스템 등</span><span class="prole">개발자</span></li>
+    </ul>
+  </section>
+
+  <!-- 06 ─────────────────────────────────── -->
+  <section class="wrap clause" id="certs">
+    <div class="clause-head">
+      <span class="num">06</span>
+      <h2>자격 및 인증</h2>
+      <span class="en">CERTIFICATIONS</span>
+    </div>
+    <ul class="certs">
+      <li class="newest"><span class="cname">ISO/IEC 42001:2023 인공지능 경영시스템 심사원보</span><span class="cbody">PCAA</span><span class="cdate">2026.08</span></li>
+      <li><span class="cname">ISTQB AI Testing</span><span class="cbody">ISTQB</span><span class="cdate">2025.11</span></li>
+      <li><span class="cname">AWS Certified Practitioner</span><span class="cbody">AWS</span><span class="cdate">2024.07</span></li>
+      <li><span class="cname">TMMi Lead Assessor (선임심사원)</span><span class="cbody">TMMi Foundation</span><span class="cdate">2018.06</span></li>
+      <li><span class="cname">TMMi Assessor (심사원)</span><span class="cbody">TMMi Foundation</span><span class="cdate">2018.06</span></li>
+      <li><span class="cname">TMMi Professional</span><span class="cbody">TMMi Foundation</span><span class="cdate">2018</span></li>
+      <li><span class="cname">ISO/IEC/IEEE 29119 Certified Tester</span><span class="cbody">KSTQB</span><span class="cdate">2017.07</span></li>
+      <li><span class="cname">ISTQB Advanced Level Test Analyst</span><span class="cbody">ISTQB</span><span class="cdate">2015.07</span></li>
+      <li><span class="cname">ISTQB Advanced Level Technical Test Analyst</span><span class="cbody">ISTQB</span><span class="cdate">2014.01</span></li>
+      <li><span class="cname">ISTQB Advanced Level Test Manager</span><span class="cbody">ISTQB</span><span class="cdate">2011.01</span></li>
+      <li><span class="cname">ISTQB Foundation Level</span><span class="cbody">ISTQB</span><span class="cdate">2010.02</span></li>
+      <li><span class="cname">정보처리기사 1급</span><span class="cbody">한국산업인력공단</span><span class="cdate">1998.07</span></li>
+    </ul>
+  </section>
+
+  <!-- 07 ─────────────────────────────────── -->
+  <section class="wrap clause" id="edu">
+    <div class="clause-head">
+      <span class="num">07</span>
+      <h2>학력 및 논문</h2>
+      <span class="en">EDUCATION &amp; PAPER</span>
+    </div>
+    <ul class="plain">
+      <li><span class="period">1992.03 – 1999.02</span><span>연세대학교 공과대학 컴퓨터과학과 졸업 <span style="color:var(--muted)">(학사)</span></span></li>
+      <li><span class="period">1987.03 – 1990.02</span><span>충주고등학교 졸업</span></li>
+      <li><span class="period">2017.01</span><span>「SW 테스트 수준 측정 기반의 테스트 중심 품질관리 프레임워크의 실무 활용 효과에 대한 연구」<span style="display:block;color:var(--muted);font-size:13.5px;">주 에디터 · 한국정보과학회 심사</span></span></li>
+    </ul>
+  </section>
+
+  <!-- 08 ─────────────────────────────────── -->
+  <section class="wrap clause tail" id="contact">
+    <div class="clause-head">
+      <span class="num">08</span>
+      <h2>연락</h2>
+      <span class="en">CONTACT</span>
+    </div>
+    <div class="contact-box">
+      <a class="mail" id="mail-link" href="mailto:karion71@gmail.com">karion71@gmail.com</a>
+      <button class="copy" id="copy-btn" type="button">주소 복사</button>
+    </div>
+    <p class="note">AI 거버넌스 체계 수립, 테스트 프로세스 개선(TMMi), 고위험 프로젝트 QA에 관한 이야기는 언제든 환영합니다.</p>
+
+    <form class="form" id="contact-form" novalidate>
+      <div class="form-head">
+        <h3>메시지 남기기</h3>
+        <span>DIRECT MESSAGE</span>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="f-name">이름 <em>*</em></label>
+          <input type="text" id="f-name" name="name" maxlength="60" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-email">회신받을 이메일 <em>*</em></label>
+          <input type="email" id="f-email" name="email" maxlength="200" autocomplete="email" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-message">내용 <em>*</em></label>
+        <textarea id="f-message" name="message" maxlength="4000" required
+          placeholder="어떤 일로 연락 주셨는지 편하게 적어 주세요."></textarea>
+      </div>
+
+      <div class="trap" aria-hidden="true">
+        <label for="f-company">회사 (비워 두세요)</label>
+        <input type="text" id="f-company" name="company" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="form-foot">
+        <button class="submit" id="f-submit" type="submit">보내기</button>
+        <p class="status" id="f-status" role="status" aria-live="polite"></p>
+      </div>
+
+      <p class="privacy">남겨 주신 이름·이메일·내용은 회신 목적으로만 사용하며, 본인 외에는 열람할 수 없습니다.</p>
+    </form>
+
+    <footer>
+      <span>© <span id="year">2026</span> 김관호</span>
+      <span>KIM KWAN-HO · SEOUL</span>
+    </footer>
+  </section>
+
+</main>
+
+<script>
+  (function () {
+    var y = document.getElementById('year');
+    if (y) { y.textContent = new Date().getFullYear(); }
+
+    /* 이메일 주소 복사 */
+    var link = document.getElementById('mail-link');
+    var btn = document.getElementById('copy-btn');
+    if (link && btn) {
+      btn.addEventListener('click', function () {
+        var href = link.getAttribute('href') || '';
+        var addr = href.indexOf('mailto:') === 0 ? href.slice(7) : link.textContent.trim();
+        var settle = function (ok) {
+          btn.textContent = ok ? '복사했습니다' : '복사하지 못했습니다';
+          btn.dataset.done = ok ? '1' : '';
+          setTimeout(function () { btn.textContent = '주소 복사'; btn.dataset.done = ''; }, 1800);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(addr).then(function () { settle(true); }, function () { settle(false); });
+        } else {
+          settle(false);
+        }
+      });
+    }
+
+    /* ── Supabase 문의 폼 ──────────────────────────────────
+       PostgREST 엔드포인트로 직접 insert 한다. 라이브러리 없음.
+       publishable key는 공개되어도 되는 키이며, 실제 보호는
+       contact_messages 테이블의 RLS 정책이 담당한다.
+       (insert만 허용, select 정책 없음 → 아무도 읽을 수 없음)     */
+    var SUPABASE_URL = 'https://glyyvkucljkqmyxiomvx.supabase.co';
+    var SUPABASE_KEY = 'sb_publishable_G42DxkBeXCmDL2u07nq7lw_Ss-14rtl';
+    var TABLE = 'contact_messages';
+    var FALLBACK_MAIL = 'karion71@gmail.com';
+
+    var form = document.getElementById('contact-form');
+    if (form) {
+      var openedAt = Date.now();
+      var statusEl = document.getElementById('f-status');
+      var submitEl = document.getElementById('f-submit');
+      var fields = ['f-name', 'f-email', 'f-message'].map(function (id) {
+        return document.getElementById(id);
+      });
+
+      var say = function (text, kind) {
+        statusEl.className = 'status' + (kind ? ' ' + kind : '');
+        statusEl.textContent = text;
+      };
+
+      var sayFailed = function (detail) {
+        statusEl.className = 'status bad';
+        statusEl.textContent = detail + ' ';
+        var a = document.createElement('a');
+        a.href = 'mailto:' + FALLBACK_MAIL;
+        a.textContent = FALLBACK_MAIL + '으로 직접 보내 주세요.';
+        statusEl.appendChild(a);
+      };
+
+      var lock = function (on) {
+        submitEl.disabled = on;
+        submitEl.textContent = on ? '보내는 중…' : '보내기';
+        fields.forEach(function (el) { el.disabled = on; });
+      };
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var name = document.getElementById('f-name').value.trim();
+        var email = document.getElementById('f-email').value.trim();
+        var message = document.getElementById('f-message').value.trim();
+        var trap = document.getElementById('f-company').value;
+
+        /* 봇 차단: 숨은 필드가 채워졌거나 3초 안에 제출된 경우 조용히 무시 */
+        if (trap || Date.now() - openedAt < 3000) {
+          say('전송했습니다. 확인 후 회신드리겠습니다.', 'ok');
+          form.reset();
+          return;
+        }
+
+        if (!name) { say('이름을 입력해 주세요.', 'bad'); document.getElementById('f-name').focus(); return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          say('회신받을 이메일 주소를 확인해 주세요.', 'bad');
+          document.getElementById('f-email').focus();
+          return;
+        }
+        if (message.length < 5) { say('내용을 조금 더 적어 주세요.', 'bad'); document.getElementById('f-message').focus(); return; }
+
+        lock(true);
+        say('보내는 중입니다…');
+
+        fetch(SUPABASE_URL + '/rest/v1/' + TABLE, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': 'Bearer ' + SUPABASE_KEY,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({ name: name, email: email, message: message })
+        }).then(function (res) {
+          if (res.ok) {
+            form.reset();
+            openedAt = Date.now();
+            say('보냈습니다. 확인 후 회신드리겠습니다.', 'ok');
+            return;
+          }
+          return res.text().then(function (body) {
+            console.error('Supabase insert 실패', res.status, body);
+            sayFailed('전송하지 못했습니다 (오류 ' + res.status + ').');
+          });
+        }).catch(function (err) {
+          console.error('Supabase 연결 실패', err);
+          sayFailed('서버에 연결하지 못했습니다.');
+        }).then(function () {
+          lock(false);
+        });
+      });
+    }
+
+    /* 현재 보고 있는 절을 상단 바에 표시 */
+    var links = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+    var targets = links
+      .map(function (a) { return document.querySelector(a.getAttribute('href')); })
+      .filter(Boolean);
+
+    if (!('IntersectionObserver' in window) || !targets.length) { return; }
+
+    var visible = {};
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { visible[e.target.id] = e.isIntersecting; });
+      var current = null;
+      for (var i = 0; i < targets.length; i++) {
+        if (visible[targets[i].id]) { current = targets[i].id; break; }
+      }
+      links.forEach(function (a) {
+        a.classList.toggle('is-active', current !== null && a.getAttribute('href') === '#' + current);
+      });
+    }, { rootMargin: '-72px 0px -55% 0px', threshold: 0 });
+
+    targets.forEach(function (t) { io.observe(t); });
+  })();
+</script>

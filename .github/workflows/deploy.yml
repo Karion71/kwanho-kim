@@ -1,0 +1,41 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 소스 체크아웃
+        uses: actions/checkout@v4
+
+      # enablement: true — 저장소에 Pages가 꺼져 있으면 여기서 켠다.
+      # 덕분에 Settings > Pages 를 손으로 건드릴 필요가 없다.
+      - name: Pages 설정 및 활성화
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: 사이트 파일 업로드
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: 배포
+        id: deployment
+        uses: actions/deploy-pages@v4
