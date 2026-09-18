@@ -11,8 +11,11 @@
 <meta property="og:title" content="김관호 — AI 거버넌스 · 엔터프라이즈 SW 품질">
 <meta property="og:description" content="AI 거버넌스와 엔터프라이즈 SW 품질을 설계하는 27년차 테스트 매니저. ISO/IEC 42001 인증 주도, TMMi 선임심사원, ISTQB Advanced Level 3종.">
 <meta property="og:url" content="https://karion71.github.io/kwanho-kim/">
+<meta property="og:image" content="https://karion71.github.io/kwanho-kim/profile.jpg">
+<meta property="og:image:width" content="600">
+<meta property="og:image:height" content="750">
 <meta property="og:locale" content="ko_KR">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap">
@@ -186,6 +189,30 @@
     margin-top: 26px;
   }
   .ident b { font-weight: 500; color: var(--ink-2); }
+
+  /* ── 인물 사진 ───────────────────────────── */
+  .mast-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 44px;
+  }
+  .mast-text { flex: 1 1 auto; min-width: 0; }
+
+  .portrait {
+    flex: 0 0 auto;
+    width: 188px;
+    margin: 0;
+    padding: 5px;                      /* 얇은 마감 여백 */
+    border: 1px solid var(--line-2);
+    background: var(--surface);
+  }
+  .portrait img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
 
   /* ── 지표 스트립 ─────────────────────────── */
   .figures {
@@ -596,6 +623,8 @@
   @media (max-width: 760px) {
     .wrap { padding-inline: 20px; }
     .masthead { padding-block: 40px 0; }
+    .mast-top { flex-direction: column-reverse; align-items: flex-start; gap: 26px; }
+    .portrait { width: 132px; }
     .figures { grid-template-columns: repeat(2, 1fr); }
     .fig { border-bottom: 1px solid var(--line); }
     .fig:nth-child(2n) { border-right: 0; }
@@ -644,14 +673,22 @@
 <main>
 
   <header class="wrap masthead">
-    <p class="doctype">SW QUALITY GOVERNANCE · EST. 1999</p>
-    <h1>김관호<span class="romaja">KIM KWAN-HO</span></h1>
-    <p class="title-line">AI 거버넌스와 엔터프라이즈 SW 품질을 설계하는 27년차 테스트 매니저.</p>
+    <div class="mast-top">
+      <div class="mast-text">
+        <p class="doctype">SW QUALITY GOVERNANCE · EST. 1999</p>
+        <h1>김관호<span class="romaja">KIM KWAN-HO</span></h1>
+        <p class="title-line">AI 거버넌스와 엔터프라이즈 SW 품질을 설계하는 27년차 테스트 매니저.</p>
 
-    <div class="ident">
-      <span>소속 <b>프리랜서</b></span>
-      <span>직무 <b>AI Governance · QA / Test Manager</b></span>
-      <span>위치 <b>서울</b></span>
+        <div class="ident">
+          <span>소속 <b>프리랜서</b></span>
+          <span>직무 <b>AI Governance · QA / Test Manager</b></span>
+          <span>위치 <b>서울</b></span>
+        </div>
+      </div>
+
+      <figure class="portrait">
+        <img src="profile.jpg" width="600" height="750" alt="김관호" decoding="async">
+      </figure>
     </div>
 
     <dl class="figures">
