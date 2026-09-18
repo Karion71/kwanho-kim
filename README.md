@@ -10,6 +10,7 @@ AI 거버넌스 · 엔터프라이즈 SW 품질 전문가 김관호의 한 페�
 |---|---|
 | `index.html` | 사이트 전체 (HTML + CSS + JS 단일 파일) |
 | `supabase-setup.sql` | 문의 폼용 Supabase 테이블·보안 정책 |
+| `supabase-notify.sql` | 새 문의 발생 시 메일 알림 트리거 |
 
 ## 스택
 
@@ -41,3 +42,17 @@ python -m http.server 8000
 
 `http://localhost:8000` 으로 접속합니다. `file://` 로 직접 열면 브라우저 보안 정책 때문에
 폼 전송이 차단될 수 있습니다.
+
+## 새 문의 메일 알림
+
+`contact_messages` 에 행이 들어오면 Postgres 트리거가 `pg_net` 으로
+Resend API 를 호출해 메일을 보냅니다. Edge Function 을 쓰지 않으므로
+Supabase CLI 없이 SQL Editor 에서 설정이 끝납니다.
+
+- API 키는 함수 본문이 아니라 **Supabase Vault** 에 보관합니다
+- `reply_to` 에 문의한 사람의 주소가 들어가, 받은 메일에 그대로 답장하면 회신됩니다
+- `pg_net` 은 비동기라 메일 발송이 폼 전송을 지연시키지 않습니다
+- 메일 발송이 실패해도 **문의 내용은 이미 저장된 뒤**라 유실되지 않습니다
+
+설정 절차는 `supabase-notify.sql` 상단 주석을 참고하세요.
+키를 채워 넣은 내용을 이 저장소에 커밋하지 마세요 — 공개 저장소입니다.
